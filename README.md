@@ -9,4 +9,6 @@ Laravel + Next.jsのテンプレート
 ```
 make initialize
 ```
-
+```
+docker compose up
+```
