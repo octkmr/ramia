@@ -10,18 +10,37 @@ Laravel + Next.jsのテンプレート
 ```
 git clone git@github.com:octkmr/ramia.git {repository_name}
 ```
+
 リポジトリに移動
 ```
 cd {repository_name}
 ```
+
+git初期化
+```
+rm -rf .git
+```
+
+git追加
+```
+git init
+```
+
+remote追加
+```
+git remote add origin {repository_url}
+```
+
 各コンテナにアクセスするポートやDBのパラメータを指定
 ```
 vim .env
 ```
+
 初期化処理
 ```
 make initialize
 ```
+
 起動
 ```
 docker compose up
