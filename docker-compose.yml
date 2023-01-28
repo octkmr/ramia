@@ -31,6 +31,8 @@ services:
       - "${YARN_PORT_LOCAL}:3000"
     volumes:
       - ./frontend:/src
-    command: 'yarn dev'
+      - node_modules:/var/www/node_modules:delegated
+    command: yarn dev
 volumes:
   db-volume:
+  node_modules:

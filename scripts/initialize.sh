@@ -26,7 +26,7 @@ sh ./scripts/php.sh artisan app:initialize
 
 # フロントエンド
 ## ライブラリインストール
-docker compose run --rm yarn yarn install
+docker compose run --rm yarn yarn
 
 echo ""
 echo "initialize_app end"
