@@ -32,6 +32,10 @@ git remote add origin {repository_url}
 ```
 
 各コンテナにアクセスするポートやDBのパラメータを指定
+
+※以下も同様の修正をする
+- backend/.env.example
+- docker/db/init/create_test_db.sql
 ```
 vim .env
 ```
