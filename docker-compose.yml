@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  php:
+    build:
+      context: ./docker/php
+    ports:
+      - "${PHP_PORT_LOCAL}:8080"
+    volumes:
+      - ./backend:/var/www
+    depends_on:
+      - db
+  db:
+    build:
+      context: ./docker/db
+    ports:
+      - "${DB_PORT_LOCAL}:3306"
+    volumes:
+      - ./docker/db/init:/docker-entrypoint-initdb.d
+      - db-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      TZ: "Asia/Tokyo"
+  yarn:
+    build:
+      context: ./docker/yarn
+    ports:
+      - "${YARN_PORT_LOCAL}:3000"
+    volumes:
+      - ./frontend:/src
+    command: 'yarn dev'
+volumes:
+  db-volume:
